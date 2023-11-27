@@ -141,7 +141,7 @@ function fun17() {
       return "hello";
     },
   };
-  console.log(a);
+  console.log(JSON.stringify(a));
 }
 
 function fun18() {
@@ -155,7 +155,6 @@ function fun18() {
   }
   console.log(a.toString());
 }
-fun18()
 // "Internal [[class]]" typically refers to an internal property that is used to identify the type of an object.
 // this can be accessed using Object.prototype.toString.call()
 // object  wraping is done automatically in js. Hence it is better to use primitive values than objects
