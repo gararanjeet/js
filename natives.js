@@ -161,6 +161,7 @@ function fun18() {
 // In array and error creation we can ommit new keyword but the result wont effect.
 // In fun1 a.length is optimised than b.length so b.length is slower and another reason is fun2 and fun3
 // we should always declare object as {}, we should not use "new Object()" reason is performance
+// if we use new keyword object will be declared with fixed memory size.
 // other reason for not to create object using Object() is we cant add all properties at once.
 // "new Object()" is used when we want to delcared objects with dynamic properties.
 // The reason is similar to usage for RegExp() and function()
