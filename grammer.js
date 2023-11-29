@@ -78,9 +78,140 @@ function fun8() {
   }
 }
 
+function fun9() {
+  console.log((false && true) || true);
+}
+
+function fun10() {
+  //short circuiting
+  function foo() {
+    console.log(a);
+  }
+  var a = 42;
+  var b = 0;
+  a && foo();
+  b && foo();
+}
+
+function fun11() {
+  console.log(typeof a);
+  console.log(typeof b);
+  let b;
+}
+
+function fun12() {
+  var b = 3;
+  function foo(a = 42, c = a + b + 5) {
+    console.log("inside funciton");
+  }
+  foo();
+}
+
+function fun13() {
+  var b = 3;
+  function foo(a = 42, b = a + b + 5) {
+    console.log("inside funciton");
+  }
+  foo();
+}
+
+function fun14() {
+  function foo(a = 42, b = a + 1) {
+    console.log(arguments.length, a, b, arguments[0], arguments[1]);
+  }
+  foo();
+  foo(10);
+  foo(10, undefined);
+  foo(10, null);
+}
+
+function fun15() {
+  for (var i = 0; i < 10; i++) {
+    try {
+      continue;
+    } finally {
+      console.log(i);
+    }
+  }
+}
+
+function fun16() {
+  function foo() {
+    try {
+      return 42;
+    } finally {
+      console.log("hello");
+    }
+    console.log("never runs");
+  }
+  console.log(foo());
+}
+
+function fun17() {
+  var a = "42";
+  switch (true) {
+    case a == 10:
+      console.log("10 or '10'");
+      break;
+    case a == 42:
+      console.log("42 or '42'");
+      break;
+    default:
+      break;
+  }
+}
+
+function fun18() {
+  var a = "hello world";
+  var b = 10;
+  switch (true) {
+    case a || b == 10:
+      console.log("case");
+      break;
+    case !!(a || b == 10):
+      console.log("");
+      break;
+    default:
+      console.log("default");
+  }
+}
+
+function fun19() {
+  var a = 10;
+  switch (a) {
+    case 1:
+    case 2:
+      break;
+    default:
+      console.log("default");
+    case 3:
+      console.log("3");
+      break;
+    case 4:
+      console.log("4");
+  }
+}
+
+fun19();
+
 // Every statement has a return value (we can check it in browser consol)
 // var a = 10 results in 10 but var statement returns undefined
 // Variable declaration algorithm actually return string with variable name but it is swallowed
 // up by VariableStatement algorithmwhich forces an empty completion value.
-// {} has different meaning in different circumstances liek as obj litteral, as block, as destructuring obj
+// {} has different meaning in different circumstances like as obj litteral, as block, as destructuring obj
 // there is no else if in js it is actually works as if and else only
+// associativity is different from order of execution
+// order of execution is always left to right but associativity defines the grouping
+// ASI (Automatic Semicolon Insertion) is when JS assumes a ; in certain places even if we dont put.
+// ; is actully expected at the end of return, do..while, break, continue, yeild.. etc...
+// even if we dont keep a ; JS automatically adds it
+// js only add ; in the presence of new line
+// ASI is a error correction routine. (parser error)
+// Temporal Dead Zone refers to places in code where a variable reference cannot yet made, because it
+// hasnt reached its required initialization
+// Switch statement uses === for comparision
+// if we want coercion to occur we can provide "case a == 43" but the value of the expression and the value provided in the switch statement
+// still uses === for comparision.
+// Host objects are objects which are created by the env. where js is running (for ex: browser)
+// <div id="foo"></div> creates foo variable globally
+// never extend native prototypes
